@@ -4,13 +4,12 @@ import javafx.stage.Stage;
 import javafx.scene.image.*;
 import javafx.scene.Scene;
 import javafx.animation.*;
-import javafx.scene.transform.Scale;
 
 
 var frame = 0;
 var duke = ImageView {
     image: bind Image {
-        url: "{__DIR__}/duke/T{frame}.gif";
+        url: "{__DIR__}duke/T{frame}.gif";
     }
     transforms: [
 /*        Scale { x: 2, y: 2 } */

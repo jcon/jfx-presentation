@@ -32,7 +32,7 @@ var shadowText = Text {
             offsetX: 5
             offsetY: 15
             color: Color.GRAY
-        }   
+        }  
 }
 
 Stage {
