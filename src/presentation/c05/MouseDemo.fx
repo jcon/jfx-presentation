@@ -33,7 +33,7 @@ var rect = Rectangle {
         message = "mouse exited!"
     }
     onKeyPressed: function( e: KeyEvent ):Void {
-
+        message = "key pressed!"
     }
 };
 

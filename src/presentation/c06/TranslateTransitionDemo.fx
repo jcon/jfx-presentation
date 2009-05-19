@@ -1,4 +1,4 @@
-package presentation.animation;
+package presentation.c06;
 
 import javafx.stage.Stage;
 import javafx.scene.image.*;

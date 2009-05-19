@@ -1,4 +1,4 @@
-package presentation.effect;
+package presentation.c03;
 
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -7,20 +7,8 @@ import javafx.scene.effect.*;
 import javafx.scene.effect.light.*;
 import javafx.scene.paint.Color;
 
-var text = Text {
-    content: "JavaSIG"
-    font: Font.font("Garmond", FontWeight.BOLD, 90)
-    x: 10,
-    y: 30,
-    textOrigin: TextOrigin.TOP
-    stroke: Color.BLACK
-    strokeWidth: 3
-    fill: Color.DEEPSKYBLUE
-}
-
-
 var shadowText = Text {
-    content: "JavaSIG"
+    content: "CT Java"
     font: Font.font("Garmond", FontWeight.BOLD, 90)
     x: 10,
     y: 200,
@@ -32,7 +20,6 @@ var shadowText = Text {
         light: DistantLight { azimuth: -135 }
         surfaceScale: 5
     }
- 
 }
 
 Stage {
@@ -41,7 +28,6 @@ Stage {
     height: 600
     scene: Scene {
         content: [
-            text,
             shadowText
         ]
     }
