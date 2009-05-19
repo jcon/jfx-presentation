@@ -1,3 +1,4 @@
+
 package presentation.c06;
 
 import javafx.animation.*;
@@ -36,9 +37,7 @@ var timeline = Timeline {
     ]
 };
 
-
 timeline.playFromStart();
-
 
 Stage {
     title: "Duke"
