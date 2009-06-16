@@ -1,4 +1,4 @@
-package presentation.events;
+package presentation.c05;
 
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -20,19 +20,19 @@ var rect = Rectangle {
     width: 100,
     height: 100
     fill: Color.ROYALBLUE
-    onMouseMoved: function( e: MouseEvent ):Void {
-        message = "mouse moved!"
+    onMouseMoved: function(e: MouseEvent):Void {
+        message = "{e.x} {e.y} mouse moved!"
     }
-    onMouseClicked: function( e: MouseEvent ):Void {
+    onMouseClicked: function(e: MouseEvent):Void {
         message = "mouse clicked!"
     }
-    onMousePressed: function( e: MouseEvent ):Void {
+    onMousePressed: function(e: MouseEvent):Void {
         message = "mouse pressed!"
     }
-    onMouseExited: function( e: MouseEvent ):Void {
+    onMouseExited: function(e: MouseEvent):Void {
         message = "mouse exited!"
     }
-    onKeyPressed: function( e: KeyEvent ):Void {
+    onKeyPressed: function(e: KeyEvent):Void {
         message = "key pressed!"
     }
 };

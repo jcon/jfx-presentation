@@ -9,7 +9,7 @@ import javafx.scene.paint.Color;
 var effectSwitch: EffectSwitch = EffectSwitch {
     node: Rectangle {
         x: 100   
-        y: 10    // and slightly lower
+        y: 10  
         width: 200
         height: 200
         fill: Color.DARKGOLDENROD

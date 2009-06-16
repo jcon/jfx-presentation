@@ -18,10 +18,18 @@ var age: SwingTextField = SwingTextField {
     columns: 4
 };
 
+/**
+ * We can use Swing components inside JavaFX. We just need to wrap them
+ * inside a swing component.
+ *
+ * Most common swing components are already wrapped!
+ */
 class SwingGridPanel extends SwingComponent{
 
     var panel: JPanel;
-    
+
+    // Instead of calling panel.add() for each component, we can
+    // add components declaritively
     public var contents: SwingComponent[]
         on replace {
             for (c in contents) {
@@ -29,6 +37,7 @@ class SwingGridPanel extends SwingComponent{
             }
         };
 
+    // Every SwingComponent has to return its underlying JComponent
     public override function createJComponent(){
         panel = new JPanel(new GridLayout(0, 2));
         return panel;
@@ -45,19 +54,24 @@ Stage {
             SwingGridPanel {
                 translateX: 100
                 translateY: 100
+                // Declaritvely add to JPanel without explicitly calling
+                // add.  Shows visually in code where they're laid out
                 contents: [
+                    // row 1
                     SwingLabel {
                         labelFor: name
                         text: "Name:"
                         horizontalAlignment: SwingHorizontalAlignment.RIGHT
                     },
                     name,
+                    // row 2
                     SwingLabel {
                         labelFor: age
                         text: "Age:"
                         horizontalAlignment: SwingHorizontalAlignment.RIGHT
                     },
                     age,
+                    // row 3
                     SwingButton {
                         text: "Save"
                         action: function() {

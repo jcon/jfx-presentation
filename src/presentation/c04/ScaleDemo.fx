@@ -15,6 +15,7 @@ var effectSwitch: EffectSwitch = EffectSwitch {
         fill: Color.BURLYWOOD
         transforms: [
             Scale {
+                // we can scale starting from any X,Y coordinate
                 pivotX: 50
                 pivotY: 150
                 x: bind if (effectSwitch.effectOn) 1.25 else 1

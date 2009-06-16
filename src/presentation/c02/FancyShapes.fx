@@ -28,6 +28,7 @@ Stage {
                     controlX2:  150,  controlY2: 200
                          endX: 200,       endY:  100
                 },
+                // Iso Triangle
                 Path {
                     fill: Color.DARKBLUE
                     elements: [

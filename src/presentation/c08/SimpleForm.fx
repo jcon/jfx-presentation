@@ -8,6 +8,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.ext.swing.SwingButton;
 
+// SwingTextFields wrap JTextFields.
+//
+// Provide helpful attributes for manipulating the underlying JTextField
 var name: SwingTextField = SwingTextField {
     columns: 25
 };
@@ -15,6 +18,7 @@ var name: SwingTextField = SwingTextField {
 var state: SwingTextField = SwingTextField {
     columns: 4
 };
+
 
 Stage {
     title : "SimpleForm"
@@ -26,6 +30,7 @@ Stage {
                 translateX: 50
                 translateY: 100
                 content: [
+                    // Row 1
                     HBox {
                         content: [
                             SwingLabel {
@@ -35,6 +40,7 @@ Stage {
                             name
                         ]
                     },
+                    // Row 2
                     HBox {
                         content: [
                             SwingLabel {
@@ -44,11 +50,14 @@ Stage {
                             state
                         ]
                     },
+                    // Row 3
                     HBox {
                         content: [
                             SwingButton {
                                 text: "Save"
                                 action: function() {
+                                    // we could have done something with these values such
+                                    // as save to a DB
                                     println("saving first={name.text} state={state.text}")
                                 }
                             },

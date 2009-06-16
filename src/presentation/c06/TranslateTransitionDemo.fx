@@ -9,7 +9,7 @@ import javafx.animation.transition.*;
 import javafx.scene.transform.Scale;
 import javafx.scene.paint.Color;
 
-
+// X,Y coordinates of our rectangle (same as before)
 var xPosition = 0;
 var yPosition = 0;
 var rect = Rectangle {
@@ -20,6 +20,8 @@ var rect = Rectangle {
     fill: Color.DARKGREEN
 };
 
+// Translate Transition combines the Translate transform with an animation
+// timeline.  This is an equivalent animation to the KeyFrameDemo.
 var translate = TranslateTransition {
     repeatCount: Timeline.INDEFINITE
     duration: 3s

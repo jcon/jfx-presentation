@@ -24,6 +24,7 @@ Stage {
                 stroke: Color.DARKGREEN
             },
             Arc {
+
                 centerX: 200, centerY: 325
                 radiusX: 100,  radiusY: 100
                 startAngle: 45,  length: 270

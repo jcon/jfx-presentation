@@ -16,11 +16,19 @@ import javafx.scene.text.TextOrigin;
 import javafx.stage.Stage;
 import javafx.scene.input.MouseEvent;
 
+/**
+ * Simple button that resizes itself based on its text.  This button
+ * provides feedback indicating when its clicked.
+ */
 public class Button extends CustomNode {
+    // We'll pad the text, so let's use a constant
     def PADDING: Number = 4;
-    
+
+    // Programs can update this value
     public var text: String;
 
+    // the node for the text, updates whenever
+    // text does
     var textNode = Text {
         content: bind text
         font: Font {
@@ -35,6 +43,9 @@ public class Button extends CustomNode {
     // Track the height and width of the text node
     var width: Number;
     var height: Number;
+    // A trigger that is executed whenever textNode.boundsInLocal changes
+    // this allows us to update the height and width whenever the text
+    // changes.
     var textBounds = bind textNode.boundsInLocal on replace {
         width = textBounds.width + PADDING * 2;
         height = textBounds.height + PADDING * 4;
@@ -44,6 +55,9 @@ public class Button extends CustomNode {
         pressed = true;
     }
 
+    /**
+     * The button attributes change according to the value of pressed to indicate
+     */
     public override function create(): Node {
         return Group {
             content: [
