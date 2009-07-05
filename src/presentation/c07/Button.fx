@@ -15,14 +15,19 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextOrigin;
 import javafx.stage.Stage;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Stack;
 
 /**
  * Simple button that resizes itself based on its text.  This button
- * provides feedback indicating when its clicked.
+ * provides feedback indicating when its clicked.  For more flexible
+ * UI contorls, look over the javafx.scene.control package. 
  */
 public class Button extends CustomNode {
     // We'll pad the text, so let's use a constant
     def PADDING: Number = 4;
+
+    var backgroundHighlightColor = Color.rgb(0x87, 0xAA, 0xD4);
+    var backgroundColor = Color.rgb(0x50, 0x82, 0xC1);
 
     // Programs can update this value
     public var text: String;
@@ -36,8 +41,6 @@ public class Button extends CustomNode {
             size: 16
         }
         textOrigin: TextOrigin.TOP
-        translateX: PADDING
-        translateY: 2* PADDING
     }
 
     // Track the height and width of the text node
@@ -61,38 +64,56 @@ public class Button extends CustomNode {
     public override function create(): Node {
         return Group {
             content: [
-                Rectangle {
-                    width: bind width
-                    height: bind height
-                    arcWidth: bind width / 20
-                    arcHeight: bind width / 20
-                    fill: bind if (pressed) {
-                        Color.rgb(0x50, 0x82, 0xC1)
-                    } else {
-                        LinearGradient {
-                            startX: 0.0, startY: 0.0, endX: 0.0, endY: 1.0
-                            proportional: true
-                            stops: [
-                                Stop { offset: 0.0 color: Color.rgb(0x87, 0xAA, 0xD4) },
-                                Stop { offset: 0.15 color: Color.rgb(0x50, 0x82, 0xC1) },
-                            ]
-                        }
-                    }
-                    effect: bind if (pressed) {
-                        null
-                    } else {
-                        DropShadow {
-                            color: Color.GRAY
-                            offsetX: PADDING
-                            offsetY: PADDING
-                        }
-                    }
-                },
-                textNode
+                Stack {
+                    content: [
+                        Rectangle {
+                            width: bind width
+                            height: bind height
+                            arcWidth: bind width / 20
+                            arcHeight: bind width / 20
+                            // the bound functions below automatically return
+                            // new values whenever 'pressed' changes
+                            fill: bind calculateBackground()
+                            effect: bind calculateShadow()
+                        },
+                        textNode
+                    ]
+                }
             ]
             translateX: bind if (pressed) PADDING else 0
             translateY: bind if (pressed) PADDING else 0
         };
+    }
+
+    // updates the background depending on whether the button
+    // is pressed
+    bound function calculateBackground() {
+        if (pressed) {
+            backgroundColor
+        } else {
+            LinearGradient {
+                startX: 0.0, startY: 0.0, endX: 0.0, endY: 1.0
+                proportional: true
+                stops: [
+                    Stop { offset: 0.0 color: backgroundHighlightColor },
+                    Stop { offset: 0.15 color: backgroundColor },
+                ]
+            }
+        }
+    }
+
+    // if the button is not pressed, draw a shadow to make it
+    // appear as if it is above the form.
+    bound function calculateShadow() {
+        if (pressed) {
+            null
+        } else {
+            DropShadow {
+                color: Color.GRAY
+                offsetX: PADDING
+                offsetY: PADDING
+            }
+        }
     }
 }
 
